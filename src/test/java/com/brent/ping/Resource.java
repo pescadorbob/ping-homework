@@ -1,0 +1,14 @@
+package com.brent.ping;
+
+import java.util.Map;
+
+public class Resource {
+
+    private Map<String, String> properties;
+
+    public Resource(Map<String, String> properties) {
+        this.properties = properties;
+        
+    }
+    
+}
