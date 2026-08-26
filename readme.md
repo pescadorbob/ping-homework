@@ -1,3 +1,4 @@
+
 # Homework
 
 This page represents my notes while going through the programming exercise.
@@ -77,3 +78,19 @@ rhs = new Value Expression("Joe")
 ```
 
 So then, let's right our first test that just tries the boolean filter.
+
+```Java
+@Test
+    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent() {
+        var user = aResource().withProperty("name", "John").build();
+        var isPresentExpression = new IsPresentExpression("name");
+        var filter = new FilterPredicate(isPresentExpression);
+        var expected = true;
+
+        var actual = filter.matches(user);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+```
+
+Implement the simplest thing

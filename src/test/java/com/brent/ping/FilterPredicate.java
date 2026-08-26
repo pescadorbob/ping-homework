@@ -2,13 +2,13 @@ package com.brent.ping;
 
 public class FilterPredicate {
 
-    public FilterPredicate(IsPresentExpression isPresentExpression) {
-        //TODO Auto-generated constructor stub
+    
+    public FilterPredicate(IsPresentExpression expression) {
     }
 
-    public Object matches(Resource user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'matches'");
+    public boolean matches(Resource user) {
+        return true;
+        
     }
     
 }

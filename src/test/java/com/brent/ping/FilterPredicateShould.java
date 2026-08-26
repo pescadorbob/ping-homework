@@ -3,12 +3,19 @@ package com.brent.ping;
 import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class FilterPredicateShould {
 
-    @Test
-    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent() {
+    @ParameterizedTest(name = " {0} with given input {1}")
+    @MethodSource("testCases")
+    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String name) {
         var user = aResource().withProperty("name", "John").build();
         var isPresentExpression = new IsPresentExpression("name");
         var filter = new FilterPredicate(isPresentExpression);
@@ -17,6 +24,11 @@ public class FilterPredicateShould {
         var actual = filter.matches(user);
 
         assertThat(actual).isEqualTo(expected);
+    }
+    private static Stream<Arguments> testCases() {
+        return Stream.of(
+                arguments(true,"name")
+        );
     }
 
     private static ResourceTestBuilder aResource() {
