@@ -17,17 +17,17 @@ public class FilterPredicateShould {
     @MethodSource("testCases")
     void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String name) {
         var user = aResource().withProperty("name", "John").build();
-        var isPresentExpression = new IsPresentExpression("name");
+        var isPresentExpression = new IsPresentExpression(name);
         var filter = new FilterPredicate(isPresentExpression);
-        var expected = true;
 
         var actual = filter.matches(user);
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(expectedResult);
     }
     private static Stream<Arguments> testCases() {
         return Stream.of(
-                arguments(true,"name")
+                arguments(true,"name"),
+                arguments(false,"age")
         );
     }
 
