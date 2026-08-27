@@ -11,14 +11,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class FilterPredicateShould {
+public class BooleanFilterShould {
 
     @ParameterizedTest(name = " {0} with given input {1}")
     @MethodSource("testCases")
-    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String property, String resourcePropertyName, String resourcePropertyValue, String description) {
+    void testBoolean(boolean expectedResult, 
+        String filterProperty, Boolean filterValue, 
+        String resourcePropertyName, String resourcePropertyValue, 
+        String description) {
         var resource = aResource().withProperty(resourcePropertyName, resourcePropertyValue).build();
-        var isPresentExpression = new IsPresentExpression(property);
-        var filter = new FilterPredicate(isPresentExpression);
+        var booleanExpression = new BooleanExpression(filterProperty, filterValue);
+        var filter = new Filter(booleanExpression);
 
         var actual = filter.matches(resource);
 
@@ -26,10 +29,7 @@ public class FilterPredicateShould {
     }
     private static Stream<Arguments> testCases() {
         return Stream.of(
-                arguments(true,"name","name","John","name to name"),
-                arguments(false,"age","name","John","missing property"),
-                arguments(false,"Age","age","30","Filter: Property name is case sensitive"),
-                arguments( false,"age","Age","30","Resource: Property name is case sensitive")
+                arguments(true,"isActive",true,"isActive","true","resource is Active")
         );
     }
 

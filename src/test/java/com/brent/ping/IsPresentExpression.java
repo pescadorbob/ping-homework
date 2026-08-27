@@ -3,7 +3,7 @@ package com.brent.ping;
 /**
  * IsPresentExpression
  */
-public class IsPresentExpression {
+public class IsPresentExpression implements Expression {
 
     private String property;
 

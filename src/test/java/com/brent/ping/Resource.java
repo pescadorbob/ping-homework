@@ -13,5 +13,9 @@ public class Resource {
     public boolean hasProperty(String property) {
         return properties.containsKey(property);
     }
+    public String getProperty(String property) {
+        return properties.get(property);
+        
+    }
     
 }
