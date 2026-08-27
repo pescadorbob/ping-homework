@@ -14,6 +14,8 @@ public class LogicalEvaluator {
     public boolean evaluate(boolean lhsResult, boolean rhsResult) {
         if(operator.getType() == LogicalOperatorType.AND) {
             return lhsResult && rhsResult;
+        } else if(operator.getType() == LogicalOperatorType.OR) {
+            return lhsResult || rhsResult;
         }
         throw new UnsupportedOperationException("Unsupported logical operator: " + operator.getType());
     }

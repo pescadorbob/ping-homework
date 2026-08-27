@@ -38,7 +38,11 @@ public class LogicalOperatorShould {
                 arguments("isActive", true, "isEnabled", false, LogicalOperatorType.AND, 
                 "isActive","true","isEnabled","false",true,"FILTER:isActive AND not isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: true"),
                 arguments("isActive", true, "isEnabled", true, LogicalOperatorType.AND,
-                "isActive","true","isEnabled","false",false,"FILTER:isActive AND isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: false")
+                "isActive","true","isEnabled","false",false,"FILTER:isActive AND isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: false"),
+                arguments("isActive", true, "isEnabled", true, LogicalOperatorType.OR,
+                "isActive","true","isEnabled","false",true,"FILTER:isActive OR isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: true"),
+                arguments("isActive", true, "isEnabled", true, LogicalOperatorType.OR,
+                "isActive","false","isEnabled","false",false,"FILTER: isActive OR isEnabled, RESOURCE:isActive=false AND isEnabled=false, EXPECTED: false")
         );
     }
     

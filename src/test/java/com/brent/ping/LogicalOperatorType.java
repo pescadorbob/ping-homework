@@ -4,7 +4,7 @@ package com.brent.ping;
  * LogicalOperatorType
  */
 public enum LogicalOperatorType {
-    AND("AND");
+    AND("AND"), OR("OR");
 
     private final String symbol;
 
