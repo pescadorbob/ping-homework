@@ -18,16 +18,16 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class ComparisonOperatorShould {
 
-    @ParameterizedTest(name = " {0} when x={1} applied to {2}")
+    @ParameterizedTest(name = "{5} with filter property name {0}, operator type {1}, filter property value {2}, resource property name {3}, resource property value {4}")
     @MethodSource("testCases")
     void testComparisonOperator(String filterPropertyName, ComparisonOperatorType operatorType, String filterPropertyValue,
             String resourceProperty1, String resourceValue1,    
         Boolean expectedResult, String description
     ){
-        var logicalExpression = new LogicalExpression(filterPropertyName, operatorType, filterPropertyValue);
+        var comparisonExpression = new ComparisonExpression(filterPropertyName, operatorType, filterPropertyValue);
 
-        var resource = aResource().withProperty(resourceProperty1,resourceValue1).withProperty(resourceProperty2,resourceValue2).build();
-        var filter = new Filter(logicalExpression);
+        var resource = aResource().withProperty(resourceProperty1,resourceValue1).build();
+        var filter = new Filter(comparisonExpression);
 
         var actual = filter.matches(resource);
 
