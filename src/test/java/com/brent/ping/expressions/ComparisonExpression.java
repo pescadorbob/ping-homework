@@ -1,6 +1,6 @@
-package com.brent.ping;
+package com.brent.ping.expressions;
 
-import com.brent.ping.expressions.Expression;
+import com.brent.ping.ComparisonOperatorType;
 
 /**
  * ComparisonExpression

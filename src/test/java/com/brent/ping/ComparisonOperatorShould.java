@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import com.brent.ping.expressions.BinomialExpression;
 import com.brent.ping.expressions.BooleanExpression;
+import com.brent.ping.expressions.ComparisonExpression;
 import com.brent.ping.operator.LogicalOperator;
 
 import static com.brent.ping.ResourceTestBuilder.aResource;

@@ -1,6 +1,7 @@
 package com.brent.ping;
 
 import com.brent.ping.evaluators.Evaluator;
+import com.brent.ping.expressions.ComparisonExpression;
 import com.brent.ping.expressions.Expression;
 
 /**

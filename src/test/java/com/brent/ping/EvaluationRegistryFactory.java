@@ -6,6 +6,7 @@ import com.brent.ping.evaluators.IsPresentEvaluator;
 import com.brent.ping.evaluators.LogicalEvaluator;
 import com.brent.ping.expressions.BinomialExpression;
 import com.brent.ping.expressions.BooleanExpression;
+import com.brent.ping.expressions.ComparisonExpression;
 import com.brent.ping.expressions.IsPresentExpression;
 import com.brent.ping.operator.LogicalOperator;
 
