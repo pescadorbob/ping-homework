@@ -20,19 +20,14 @@ public class ComparisonOperatorShould {
 
     @ParameterizedTest(name = " {0} when x={1} applied to {2}")
     @MethodSource("testCases")
-    void testComparisonOperator(String lhsProperty, Boolean lhsValue,
-        String rhsProperty, Boolean rhsValue, LogicalOperatorType operatorType, 
-        String resourceProperty1, String resourceValue1,
-        String resourceProperty2, String resourceValue2,
+    void testComparisonOperator(String filterPropertyName, ComparisonOperatorType operatorType, String filterPropertyValue,
+            String resourceProperty1, String resourceValue1,    
         Boolean expectedResult, String description
     ){
-        
-        var lhs = new BooleanExpression(lhsProperty, lhsValue);
-        var rhs = new BooleanExpression(rhsProperty, rhsValue);
-        var logicalOperator = new LogicalOperator(operatorType);
-        var binomialExpression = new BinomialExpression(lhs, logicalOperator, rhs);
+        var logicalExpression = new LogicalExpression(filterPropertyName, operatorType, filterPropertyValue);
+
         var resource = aResource().withProperty(resourceProperty1,resourceValue1).withProperty(resourceProperty2,resourceValue2).build();
-        var filter = new Filter(binomialExpression);
+        var filter = new Filter(logicalExpression);
 
         var actual = filter.matches(resource);
 
@@ -40,14 +35,8 @@ public class ComparisonOperatorShould {
     }
     private static Stream<Arguments> testCases() {
         return Stream.of(
-                arguments("isActive", true, "isEnabled", false, LogicalOperatorType.AND, 
-                "isActive","true","isEnabled","false",true,"FILTER:isActive AND not isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: true"),
-                arguments("isActive", true, "isEnabled", true, LogicalOperatorType.AND,
-                "isActive","true","isEnabled","false",false,"FILTER:isActive AND isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: false"),
-                arguments("isActive", true, "isEnabled", true, LogicalOperatorType.OR,
-                "isActive","true","isEnabled","false",true,"FILTER:isActive OR isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: true"),
-                arguments("isActive", true, "isEnabled", true, LogicalOperatorType.OR,
-                "isActive","false","isEnabled","false",false,"FILTER: isActive OR isEnabled, RESOURCE:isActive=false AND isEnabled=false, EXPECTED: false")
+                arguments("age", ComparisonOperatorType.EQUALS, "35",
+                "age","35",true,"FILTER:age EQUALS 35, RESOURCE:age=35, EXPECTED: true")
         );
     }
     
