@@ -36,7 +36,17 @@ public class ComparisonOperatorShould {
     private static Stream<Arguments> testCases() {
         return Stream.of(
                 arguments("age", ComparisonOperatorType.EQUALS, "35",
-                "age","35",true,"FILTER:age EQUALS 35, RESOURCE:age=35, EXPECTED: true")
+                "age","35",true,"FILTER:age EQUALS 35, RESOURCE:age=35, EXPECTED: true"),
+                arguments("age", ComparisonOperatorType.EQUALS, "35",
+                "age","36",false,"FILTER:age EQUALS 35, RESOURCE:age=36, EXPECTED: false"),
+                arguments("age", ComparisonOperatorType.NOT_EQUALS, "35",
+                "age","36",true,"FILTER:age != 35, RESOURCE:age=35, EXPECTED: false"),
+                arguments("age", ComparisonOperatorType.NOT_EQUALS, "35",
+                "age","35",false,"FILTER:age != 35, RESOURCE:age=35, EXPECTED: false"),
+                arguments("age", ComparisonOperatorType.GREATER_THAN, "35",
+                "age","36",true,"FILTER:age > 35, RESOURCE:age=36, EXPECTED: true"),
+                arguments("age", ComparisonOperatorType.GREATER_THAN, "35",
+                "age","34",false,"FILTER:age > 35, RESOURCE:age=34, EXPECTED: false")
         );
     }
     
