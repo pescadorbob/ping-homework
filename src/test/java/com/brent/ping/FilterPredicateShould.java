@@ -15,8 +15,8 @@ public class FilterPredicateShould {
 
     @ParameterizedTest(name = " {0} with given input {1}")
     @MethodSource("testCases")
-    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String property, String resourceName, String resourceValue, String description) {
-        var resource = aResource().withProperty(resourceName, resourceValue).build();
+    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String property, String resourcePropertyName, String resourcePropertyValue, String description) {
+        var resource = aResource().withProperty(resourcePropertyName, resourcePropertyValue).build();
         var isPresentExpression = new IsPresentExpression(property);
         var filter = new FilterPredicate(isPresentExpression);
 
@@ -28,7 +28,8 @@ public class FilterPredicateShould {
         return Stream.of(
                 arguments(true,"name","name","John","name to name"),
                 arguments(false,"age","name","John","missing property"),
-                arguments(false,"Age","age","30","Property name is case sensitive")
+                arguments(false,"Age","age","30","Filter: Property name is case sensitive"),
+                arguments( false,"age","Age","30","Resource: Property name is case sensitive")
         );
     }
 
