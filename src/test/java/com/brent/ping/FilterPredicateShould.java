@@ -15,19 +15,20 @@ public class FilterPredicateShould {
 
     @ParameterizedTest(name = " {0} with given input {1}")
     @MethodSource("testCases")
-    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String property) {
-        var user = aResource().withProperty("name", "John").build();
+    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String property, String resourceName, String resourceValue, String description) {
+        var resource = aResource().withProperty(resourceName, resourceValue).build();
         var isPresentExpression = new IsPresentExpression(property);
         var filter = new FilterPredicate(isPresentExpression);
 
-        var actual = filter.matches(user);
+        var actual = filter.matches(resource);
 
-        assertThat(actual).isEqualTo(expectedResult);
+        assertThat(actual).as(description).isEqualTo(expectedResult);
     }
     private static Stream<Arguments> testCases() {
         return Stream.of(
-                arguments(true,"name"),
-                arguments(false,"age")
+                arguments(true,"name","name","John","name to name"),
+                arguments(false,"age","name","John","missing property"),
+                arguments(false,"Age","age","30","Property name is case sensitive")
         );
     }
 
