@@ -1,4 +1,7 @@
-package com.brent.ping;
+package com.brent.ping.evaluators;
+
+import com.brent.ping.LogicalOperatorType;
+import com.brent.ping.operator.LogicalOperator;
 
 /**
  * LogicalEvaluator

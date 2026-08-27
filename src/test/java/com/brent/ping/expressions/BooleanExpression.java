@@ -1,4 +1,4 @@
-package com.brent.ping;
+package com.brent.ping.expressions;
 
 /**
  * BooleanExpression

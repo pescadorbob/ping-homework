@@ -1,4 +1,6 @@
-package com.brent.ping;
+package com.brent.ping.operator;
+
+import com.brent.ping.LogicalOperatorType;
 
 /**
  * LogicalOperator

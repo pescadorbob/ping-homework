@@ -1,5 +1,7 @@
 package com.brent.ping;
 
+import com.brent.ping.expressions.Expression;
+
 public class Filter {
 
     

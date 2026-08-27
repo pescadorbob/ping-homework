@@ -1,4 +1,6 @@
-package com.brent.ping;
+package com.brent.ping.expressions;
+
+import com.brent.ping.operator.LogicalOperator;
 
 /**
  * BinomialExpression

@@ -1,4 +1,10 @@
-package com.brent.ping;
+package com.brent.ping.evaluators;
+
+import com.brent.ping.EvaluationRegistry;
+import com.brent.ping.Resource;
+import com.brent.ping.expressions.BinomialExpression;
+import com.brent.ping.expressions.Expression;
+import com.brent.ping.operator.LogicalOperator;
 
 /**
  * BinomialEvaluator

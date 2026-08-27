@@ -16,11 +16,11 @@ import static com.brent.ping.ResourceTestBuilder.aResource;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class LogicalOperatorShould {
+public class ComparisonOperatorShould {
 
     @ParameterizedTest(name = " {0} when x={1} applied to {2}")
     @MethodSource("testCases")
-    void testLogicalOperator(String lhsProperty, Boolean lhsValue,
+    void testComparisonOperator(String lhsProperty, Boolean lhsValue,
         String rhsProperty, Boolean rhsValue, LogicalOperatorType operatorType, 
         String resourceProperty1, String resourceValue1,
         String resourceProperty2, String resourceValue2,

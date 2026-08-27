@@ -1,4 +1,8 @@
-package com.brent.ping;
+package com.brent.ping.evaluators;
+
+import com.brent.ping.Resource;
+import com.brent.ping.expressions.BooleanExpression;
+import com.brent.ping.expressions.Expression;
 
 /**
  * BooleanEvaluator
