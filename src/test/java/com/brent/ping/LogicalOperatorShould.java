@@ -36,7 +36,9 @@ public class LogicalOperatorShould {
     private static Stream<Arguments> testCases() {
         return Stream.of(
                 arguments("isActive", true, "isEnabled", false, LogicalOperatorType.AND, 
-                "isActive","true","isEnabled","false",true,"isActive AND not isEnabled")
+                "isActive","true","isEnabled","false",true,"FILTER:isActive AND not isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: true"),
+                arguments("isActive", true, "isEnabled", true, LogicalOperatorType.AND,
+                "isActive","true","isEnabled","false",false,"FILTER:isActive AND isEnabled, RESOURCE:isActive=true AND isEnabled=false, EXPECTED: false")
         );
     }
     
