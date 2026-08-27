@@ -29,7 +29,9 @@ public class BooleanFilterShould {
     }
     private static Stream<Arguments> testCases() {
         return Stream.of(
-                arguments(true,"isActive",true,"isActive","true","resource is Active")
+                arguments(true,"isActive",true,"isActive","true","resource is Active"),
+                arguments(false,"isActive",true,"isActive","false","resource is not Active"),
+                arguments(false,"isActive",true,"missingProperty","True","eval false if missing property")
         );
     }
 
