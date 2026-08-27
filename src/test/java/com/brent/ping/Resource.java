@@ -10,5 +10,8 @@ public class Resource {
         this.properties = properties;
         
     }
+    public boolean hasProperty(String property) {
+        return properties.containsKey(property);
+    }
     
 }

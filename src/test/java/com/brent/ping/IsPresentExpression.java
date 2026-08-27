@@ -12,4 +12,8 @@ public class IsPresentExpression {
         
     }
 
+    public String getProperty() {
+        return property;
+    }
+
 }

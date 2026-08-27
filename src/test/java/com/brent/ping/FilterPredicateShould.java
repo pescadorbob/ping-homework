@@ -15,9 +15,9 @@ public class FilterPredicateShould {
 
     @ParameterizedTest(name = " {0} with given input {1}")
     @MethodSource("testCases")
-    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String name) {
+    void evaluateToTrue_givenUserWithNameAndPredicateWithIsPresent(boolean expectedResult, String property) {
         var user = aResource().withProperty("name", "John").build();
-        var isPresentExpression = new IsPresentExpression(name);
+        var isPresentExpression = new IsPresentExpression(property);
         var filter = new FilterPredicate(isPresentExpression);
 
         var actual = filter.matches(user);
