@@ -9,7 +9,7 @@ public class EvaluationRegistryFactory {
         var registry = new EvaluationRegistry();
         registry.registerEvaluator(IsPresentExpression.class,new IsPresentEvaluator());
         registry.registerEvaluator(BooleanExpression.class, new BooleanEvaluator());
-        
+        registry.registerEvaluator(BinomialExpression.class, new BinomialEvaluator(registry));
         return registry;
     }
 
