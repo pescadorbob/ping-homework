@@ -46,7 +46,11 @@ public class ComparisonOperatorShould {
                 arguments("age", ComparisonOperatorType.GREATER_THAN, "35",
                 "age","36",true,"FILTER:age > 35, RESOURCE:age=36, EXPECTED: true"),
                 arguments("age", ComparisonOperatorType.GREATER_THAN, "35",
-                "age","34",false,"FILTER:age > 35, RESOURCE:age=34, EXPECTED: false")
+                "age","34",false,"FILTER:age > 35, RESOURCE:age=34, EXPECTED: false"),
+                arguments("age", ComparisonOperatorType.LESS_THAN, "35",
+                "age","34",true,"FILTER:age < 35, RESOURCE:age=34, EXPECTED: true"),
+                arguments("age", ComparisonOperatorType.LESS_THAN, "35",
+                "age","36",false,"FILTER:age < 35, RESOURCE:age=36, EXPECTED: false")
         );
     }
     
